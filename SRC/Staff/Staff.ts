@@ -1,4 +1,4 @@
-import { StaffList } from "./StaffList";
+import { StaffList } from "../Manager/StaffList";
 import { Address } from "../sourceOfManyClass/Address";
 import { Schedule } from "./Schedule";
 
