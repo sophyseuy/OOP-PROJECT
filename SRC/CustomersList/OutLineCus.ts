@@ -12,8 +12,3 @@ export class OutLineCustomers extends Customers{
    }
  
 }
-let table = new Table(1,2);
-let sreyKea = new OutLineCustomers("Sreykea Reun",Gender.Female,table);
-let maju = new Food(Foods.MAJU, 2);
-sreyKea.addFood(maju);
-console.log(sreyKea);

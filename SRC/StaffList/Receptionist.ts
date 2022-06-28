@@ -4,7 +4,7 @@ import { Position } from "./Positionn";
 import { Schedule } from "./Schedule";
 import { Staff } from "./Staff";
 
-export class Waiter extends Staff{
+export class Receptionist extends Staff{
     constructor(
         name: string,
         gender: Gender,
