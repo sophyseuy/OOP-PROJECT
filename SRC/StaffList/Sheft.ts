@@ -4,17 +4,17 @@ import { Position } from "./Positionn";
 import { Schedule } from "./Schedule";
 import { Staff } from "./Staff";
 
-export class Waiter extends Staff{
+export class Sheft extends Staff {
     constructor(
         name: string,
         gender: Gender,
         age: number,
         salary: number,
-        abaNumber:string,
+        abaNumber: string,
         address: Address,
-       schedule: Schedule,
-        position:Position
-   ){
-       super(name,gender,age,salary,abaNumber,address,schedule,position);
-   }
+        schedule: Schedule,
+        position: Position
+    ) {
+        super(name, gender, age, salary, abaNumber, address, schedule, position);
+    }
 }

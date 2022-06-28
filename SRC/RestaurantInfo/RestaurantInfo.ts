@@ -18,14 +18,4 @@ export class RestaurantInfo extends Restaurant {
  
 }
 
-let phnomPenh = new Address("Phnom Penh", "str 2004", 12495969, "houseNo49");
-// let vegetables = new Food("fry vegetables", 1);
-// let soup = new Food("khmer soup", 5);
-// let table1 = new Table(1, 4);
-let table2 = new Table(2, 5);
-let restaurantInfo = new RestaurantInfo("SP_Restaurant", phnomPenh);
-// restaurantInfo.addFood(vegetables);
-// restaurantInfo.addFood(soup);
-// restaurantInfo.setTable(table1);
-restaurantInfo.setTable(table2);
-console.log(restaurantInfo);
+

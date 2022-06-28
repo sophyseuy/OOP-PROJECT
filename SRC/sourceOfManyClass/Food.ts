@@ -1,7 +1,9 @@
 export enum Foods{
-    KOKO='koko',
-    MAJU='maju',
-    FRYVEGETABLE='fryvegetable'
+    KOKO='Koko',
+    MAJU='Maju',
+    FRYVEGETABLE='Fried vegetable',
+    FRYEGG='Fried egg',
+    KHMERSUOP='Khmer soup'
 }
 export class Food{
     constructor(private name:Foods,private price:number){}
