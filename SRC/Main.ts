@@ -90,7 +90,7 @@ restaurantInfo.addFood(soup);
 restaurantInfo.setTable(table1);
 restaurantInfo.setTable(table2);
 // console.log(restaurantInfo);
-// console.log(customersList);
+// console.log(customersList.getOutlineCus());
 // ========================================= RMS =====================================================
 let restaurantMS=new RestaurantMS('Restaurant Management System',restaurantInfo);
 restaurantMS.addStaffList(staffList);
