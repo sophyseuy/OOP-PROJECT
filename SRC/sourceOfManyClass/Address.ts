@@ -1,8 +1,8 @@
 export class Address{
     constructor(
-        city:string,
-        street:string,
-        phone:number,
-        houseNo:string
+        private city:string,
+        private street:string,
+        private phone:number,
+        private houseNo:string
     ){}
 }

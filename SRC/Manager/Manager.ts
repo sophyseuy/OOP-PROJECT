@@ -3,10 +3,17 @@ import { MonthPayment } from "./MonthlyPayment";
 import { StaffList } from "./StaffList";
 
 export class Manager extends Restaurant{
-    constructor(name:string,
-        income:number,
-        monthPayment:MonthPayment[],
-        staffList:StaffList[]){
+    protected monthPayment:MonthPayment[]=[];
+    constructor(name:string, protected staffList:StaffList){
         super(name)
+    }
+    addMonthPayment(param){
+        this.monthPayment.push(param);
+    }
+    getStaffList(){
+        return this.staffList;
+    }
+    getMonthPayment(){
+        return this.monthPayment;
     }
 }
