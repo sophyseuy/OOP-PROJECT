@@ -5,4 +5,5 @@ export class Address{
         private phone:number,
         private houseNo:string
     ){}
+
 }
