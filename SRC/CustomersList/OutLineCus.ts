@@ -1,14 +1,12 @@
-import { Food,Foods } from "../sourceOfManyClass/Food";
+import { Food } from "../sourceOfManyClass/Food";
 import { Table } from "../RestaurantInfo/Table";
 import { Customers,Gender } from "./Customers";
 
 export class OutLineCustomers extends Customers{
-    private foods:Food[]=[];
-    constructor(fullName:string,gender:Gender,table:Table){
-        super(fullName)
+    addFood(maju: Food) {
+        throw new Error("Method not implemented.");
     }
-   addFood(food:Food){
-    this.foods.push(food);
-   }
- 
+    constructor(private name:string,gender:Gender,table:Table,foods:Food[]){
+        super(name)
+    }
 }
