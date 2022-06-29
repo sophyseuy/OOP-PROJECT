@@ -4,7 +4,6 @@ import { Gender } from "../sourceOfManyClass/Gender";
 import { Payment } from "../sourceOfManyClass/Payment";
 import { Person } from "../StaffManagement/Person";
 import { Position } from "../StaffManagement/Positionn";
-import { Customers } from "./Customers";
 // Orders
 export class OnlineOrder {
     private foods: Food[] = [];

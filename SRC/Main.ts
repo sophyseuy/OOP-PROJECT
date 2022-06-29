@@ -2,7 +2,7 @@ import { Customers} from "./CustomerManagement/Customers";
 import { OnlineCustomers, OnlineOrder } from "./CustomerManagement/OnlineCus";
 import { Manager } from "./RestaurantManager/Manager";
 import { MonthPayment } from "./RestaurantManager/MonthlyPayment";
-import { StaffList } from "./StaffManagement/StaffList";
+import {StaffManagement } from "./StaffManagement/StaffManagement";
 import { Address } from "./sourceOfManyClass/Address";
 import { Schedule, Weeks } from "./StaffManagement/Schedule";
 import { Food, Foods } from "./sourceOfManyClass/Food";
@@ -41,16 +41,18 @@ let aResceptionist = new Staff('yeye',20, Gender.MALE,Position.RECEPTIONIST,300,
 let bSheft = new Staff('yeye',30, Gender.MALE,Position.SHEFT,500,'002744990',bAddress,bSchedule);
 let cSecurityman = new Staff('yeye',23, Gender.MALE,Position.SECURITYMAN,250,'002744990',cAddress,cSchedule);
 //get and add in staffList class
-let staffList=new StaffList();
-staffList.addWaiter(soyuWaiter);
-staffList.addClerk(yeyeClerk);
-staffList.addReceptionist(aResceptionist);
-staffList.addShefts(bSheft);
-staffList.addSecurityman(cSecurityman);
-// console.log(staffList);
+let staffManagement=new StaffManagement();
+staffManagement.addWaiter(soyuWaiter);
+staffManagement.addClerk(yeyeClerk);
+staffManagement.addReceptionist(aResceptionist);
+staffManagement.addShefts(bSheft);
+staffManagement.addSecurityman(cSecurityman);
+// console.log(staffManagement);
 // ========================================== MonthPayment ==========================================
 let januaryPayment=new MonthPayment('January',300,50,1000);
+januaryPayment.getTotalOfPayment(staffManagement);
 let februaryPayment=new MonthPayment('February',200,20,700);
+februaryPayment.getTotalOfPayment(staffManagement);
 // ============================================ Manager =============================================
 
 let manager=new Manager('sp',22,Gender.FEMALE,Position.MANAGER);
@@ -102,7 +104,7 @@ meyOnlineCus.addOrder(meyOrder);
 let customerManagement=new CustomerManagement();
 customerManagement.addOnlineCus(sreykeaOnlineCus);
 customerManagement.addOnlineCus(meyOnlineCus);
-console.log(customerManagement);
+// console.log(customerManagement);
 
 //
 let phnomPenh = new Address("Phnom Penh", "str 2004", 12495969, "houseNo49");
@@ -121,7 +123,8 @@ restaurantInfo.setTable(table2);
 // console.log(restaurantInfo);
 // ========================================= RMS =====================================================
 let restaurantMS=new RestaurantMS('Restaurant Management System',restaurantInfo,manager);
-restaurantMS.addStaffManagement(staffList);
+restaurantMS.addStaffManagement(staffManagement);
 restaurantMS.addCusManagement(customerManagement);
-// console.log(restaurantMS);
+
+console.log(restaurantMS);
 

@@ -1,18 +1,16 @@
 import { CustomerManagement } from "../CustomerManagement/CustomerManagement";
-import { Customers } from "../CustomerManagement/Customers";
 import { RestaurantInfo } from "../RestaurantInfo/RestaurantInfo";
 import { Manager } from "../RestaurantManager/Manager";
-import { StaffList } from "../StaffManagement/StaffList";
+import { StaffManagement } from "../StaffManagement/StaffManagement";
 import { Restaurant } from "./Restaurant";
 
 export class RestaurantMS extends Restaurant {
-    protected staffManagement: StaffList[] = [];
+    protected staffManagement: StaffManagement[] = [];
     protected customerManagement: CustomerManagement[] = [];
-    cusManagement: any;
     constructor(name: string,protected RestaurantInfo: RestaurantInfo,private manager:Manager) {
         super(name)
     }
-    addStaffManagement(staffManagement: StaffList) {
+    addStaffManagement(staffManagement: StaffManagement) {
         this.staffManagement.push(staffManagement)
     }
     addCusManagement(cusManagement:CustomerManagement) {
@@ -22,7 +20,7 @@ export class RestaurantMS extends Restaurant {
         return this.staffManagement;
     }
     getCusManagement() {
-        return this.cusManagement;
+        return this.customerManagement;
     }
     getRestaurantInfo(){
         return this.RestaurantInfo;
