@@ -7,4 +7,10 @@ export enum Foods{
 }
 export class Food{
     constructor(private name:Foods,private price:number){}
+    getName(){
+        return this.name;
+    }
+    getPrice(){
+        return this.price;
+    }
 }

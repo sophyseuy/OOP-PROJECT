@@ -8,5 +8,5 @@
     },
     "include": [
         "SRC/**/*/"
-    ]
+, "SRC/RestaurantManager"    ]
 }
