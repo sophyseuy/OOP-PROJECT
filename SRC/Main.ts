@@ -57,20 +57,24 @@ let manager=new Manager('sp',22,Gender.FEMALE,Position.MANAGER);
 manager.addMonthPayment(januaryPayment);
 manager.addMonthPayment(februaryPayment);
 // console.log(manager);
-//=========================================== Add Customer ============================================
+//=========================================== Online Customer ============================================
 //
 // ======================================== Customers Address =========================================
 // Sreykea Address
 let sreykeaAddress = new Address('Phnom Penh','#ST230',97252484,'No47D');
 // Mey Address
 let meyAddress = new Address('Phnom Penh','#ST28',85894545,'No48A');
-// Add foods
+// ======================================== Customers Foods =========================================
+
 //Sreykea Foodsc
 let sreykeaFoodKoko=new Food(Foods.KOKO,5);
 let sreykeaFoodFryVeg=new Food(Foods.FRYVEGETABLE,3);
 //Mey Foods
 let meyFoodFryEgg=new Food(Foods.FRYEGG,2);
 let meyFoodMaju=new Food(Foods.MAJU,3);
+
+// ======================================== CustomersOrder =========================================
+
 // Cus Sreykea
 let sreykeaOrder=new OnlineOrder(sreykeaAddress);
 sreykeaOrder.addFood(sreykeaFoodKoko)
@@ -91,7 +95,7 @@ let meyOnlineCus=new OnlineCustomers('mey',20,Gender.FEMALE,Position.ONLINECUS,m
 meyOnlineCus.addOrder(meyOrder);
 // console.log(onlinecustomers);
 
-// OutlineCustomers----------------------
+// ============================== OutlineCustomers ====================================
 let dTable=new Table(2,5);
 let dFoodFryegg = new Food(Foods.FRYEGG,2)
 
@@ -100,29 +104,33 @@ dOutLineOrder.addFood(sreykeaFoodKoko)
 dOutLineOrder.addFood(sreykeaFoodFryVeg)
 let dReceipt=new Receipt('SP_Restaurant');
 dReceipt.addFoodList(dFoodFryegg,meyFoodMaju);
-console.log(dReceipt.getTotal());
-console.log(dReceipt);
-
-let dPayment=new Payment(sreykeaReceipt)
+// console.log(dReceipt.getTotal());
+// console.log(dReceipt);
+// ==================================== OnlineCustomers Payment==========================
+let dPayment=new Payment(dReceipt)
 let dOulineCus = new OutLineCustomers(Gender.FEMALE,dPayment);
 dOulineCus.addOrder(dOutLineOrder);
 // console.log(dOulineCus)
-// ========================================== Customers Class ===========================================
+// ========================================== CustomersManagement Class ===========================================
 let customerManagement=new CustomerManagement();
 customerManagement.addOnlineCus(sreykeaOnlineCus);
 customerManagement.addOnlineCus(meyOnlineCus);
 customerManagement.addOutlineCus(dOulineCus)
 // console.log(customerManagement);
 
-//
+// console.log(customersList);
+
+// ==========================================  restaurantInfo ==================
+
+// ========================== Restaurant Address=========================
+
 let phnomPenh = new Address("Phnom Penh", "str 2004", 12495969, "houseNo49");
+// ================================= FoodsLists=================================
 let vegetables = new Food(Foods.FRYVEGETABLE, 1);
 let soup = new Food(Foods.KHMERSUOP, 5);
 let table1 = new Table(1, 4);
 let table2 = new Table(2, 5);
-// console.log(customersList);
-
-// ==========================================  restaurantInfo ===========================================
+// ========================== Restaurant ===========================
 let restaurantInfo = new RestaurantInfo("SP_Restaurant", phnomPenh);
 restaurantInfo.addFood(vegetables);
 restaurantInfo.addFood(soup);
