@@ -2,18 +2,24 @@ import { Food, Foods } from "./Food";
 
 export class Receipt {
     public food: Food[] = []
+    private total:number|string;
     constructor(private restarantName: string) { }
     addFoodList(...foodList:Food[]){
-        this.food.concat(foodList)
+        this.food=this.food.concat(foodList)
     }
     getFoodList() {
         return this.food;
     }
-    getTotalPaid() {
-        let total: number = 0;
-        for (let price of this.getFoodList()) {
-            total += price.getPrice();
+    getAllPrice():string|number {
+      let dolarSign:string="$";
+      let totalPric:number=0;
+        for (let price of this.food) {
+            totalPric +=price.getPrice();
         }
+        return (dolarSign+totalPric);
+    }
+    getTotal(){
+        return this.total=this.getAllPrice();
     }
 }
 export class Payment{

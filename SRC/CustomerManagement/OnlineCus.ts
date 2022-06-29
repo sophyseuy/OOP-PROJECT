@@ -21,7 +21,8 @@ export class OnlineOrder {
 // Customers
 export class OnlineCustomers extends Person {
     private order: OnlineOrder[] = [];
-    constructor(fullName: string,
+    constructor(
+        fullName: string,
         age: number, gender: Gender,
         position: Position,
         private payment: Payment) {

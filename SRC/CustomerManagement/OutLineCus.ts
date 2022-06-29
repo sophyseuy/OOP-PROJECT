@@ -1,20 +1,42 @@
 import { Food } from "../sourceOfManyClass/Food";
 import { Table } from "../RestaurantInfo/Table";
-import { Customers,Gender } from "./Customers";
+import { Gender } from "../sourceOfManyClass/Gender";
+import { Payment } from "../sourceOfManyClass/Payment";
 
-export class OutLineCustomers extends Customers{
+
+export class OutlineOrder {
     private foods:Food[]=[];
-    constructor(fullName:string,private gender:Gender,private table:Table){
-        super(fullName)
+    
+    constructor(private table:Table){}
+    addFood(...food: Food[]) {
+        this.foods = this.foods.concat(food)
     }
-   addFood(food:Food){
-    this.foods.push(food);
-   }
+    getCusFoods() {
+        return this.foods;
+    }
+    getTable(){
+        return this.table;
+       }
+}
+export class OutLineCustomers {
+    private order: OutlineOrder[] = [];
+    constructor(
+        private gender:Gender,
+        private payment: Payment
+        ){
+    }
    getGender(){
     return this.gender;
    }
-   getTable(){
-    return this.table;
-   }
- 
+  
+   addOrder(...orders: OutlineOrder[]) {
+        this.order=this.order.concat(orders)
+    }
+    
+    getOrdered() {
+        return this.order;
+    }
+    getPayment() {
+        return this.payment;
+    }
 }

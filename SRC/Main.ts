@@ -11,7 +11,7 @@ import { Position } from "./StaffManagement/Positionn";
 import { RestaurantMS } from "./RestaurantManagement/RestaurantMS";
 import { Table } from "./RestaurantInfo/Table";
 import { RestaurantInfo } from "./RestaurantInfo/RestaurantInfo";
-import { OutLineCustomers } from "./CustomerManagement/OutLineCus";
+import { OutLineCustomers, OutlineOrder } from "./CustomerManagement/OutLineCus";
 import { Staff } from "./StaffManagement/Staff";
 import { Gender } from "./sourceOfManyClass/Gender";
 import { Payment, Receipt } from "./sourceOfManyClass/Payment";
@@ -94,16 +94,29 @@ meyOnlineCus.addOrder(meyOrder);
 // console.log(onlinecustomers);
 
 // OutlineCustomers----------------------
-// let table = new Table(1,2);
-// let sreyKea = new OutLineCustomers("Sreykea Reun",Gender.FEMALE,table);
-// let maju = new Food(Foods.MAJU, 2);
-// sreyKea.addFood(maju);
-// console.log(sreyKea);
+let dTable=new Table(2,5);
+let dFoodFryegg = new Food(Foods.FRYEGG,2)
 
+let dOutLineOrder=new OutlineOrder(dTable);
+dOutLineOrder.addFood(sreykeaFoodKoko)
+dOutLineOrder.addFood(sreykeaFoodFryVeg)
+let dReceipt=new Receipt('SP_Restaurant');
+dReceipt.addFoodList(dFoodFryegg,meyFoodMaju);
+console.log(dReceipt.getTotal());
+console.log(dReceipt);
+
+let dPayment=new Payment(sreykeaReceipt)
+let dOulineCus = new OutLineCustomers(Gender.FEMALE,dPayment);
+dOulineCus.addOrder(dOutLineOrder);
+// console.log(dOulineCus)
 // ========================================== Customers Class ===========================================
 let customerManagement=new CustomerManagement();
 customerManagement.addOnlineCus(sreykeaOnlineCus);
 customerManagement.addOnlineCus(meyOnlineCus);
+<<<<<<< HEAD
+=======
+customerManagement.addOutlineCus(dOulineCus)
+>>>>>>> b5019a737ebb3794d062cf6c9b134cfde332eb36
 // console.log(customerManagement);
 
 //
