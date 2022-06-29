@@ -1,6 +1,6 @@
-import { Restaurant } from "../RMS/Restaurant";
+import { Restaurant } from "../RestaurantManagement/Restaurant";
 import { Address } from "../sourceOfManyClass/Address";
-import { Food ,Foods} from "../sourceOfManyClass/Food";
+import { Food, Foods } from "../sourceOfManyClass/Food";
 import { Table } from "./Table";
 
 
@@ -16,6 +16,15 @@ export class RestaurantInfo extends Restaurant {
   setTable(table: Table) {
     this.tables.push(table);
   }
- 
+  getFood() {
+    return this.foods;
+  }
+  getTable() {
+    return this.tables;
+  }
+  getAddress(){
+    return this.address;
+  }
+
 }
 

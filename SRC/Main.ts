@@ -1,27 +1,65 @@
-import { Customers, Gender } from "./CustomersList/Customers";
-import { Onlinecustomers } from "./CustomersList/OnlineCus";
-import { Manager } from "./StaffList/Manager/Manager";
-import { MonthPayment } from "./StaffList/Manager/MonthlyPayment";
-import { StaffList } from "./StaffList/StaffList";
-import { FoodList } from "./RestaurantInfo/FoodList";
+import { Customers} from "./CustomerManagement/Customers";
+import { OnlineCustomers, OnlineOrder } from "./CustomerManagement/OnlineCus";
+import { Manager } from "./RestaurantManager/Manager";
+import { MonthPayment } from "./RestaurantManager/MonthlyPayment";
+import { StaffList } from "./StaffManagement/StaffList";
 import { Address } from "./sourceOfManyClass/Address";
-import { Clerk } from "./StaffList/Clerk";
-import { Schedule } from "./StaffList/Schedule";
-import { Waiter } from "./StaffList/Waiter";
+import { Schedule, Weeks } from "./StaffManagement/Schedule";
 import { Food, Foods } from "./sourceOfManyClass/Food";
-import { CustomerList } from "./CustomersList/CustomerList";
-import { Position } from "./StaffList/Positionn";
-import { RestaurantMS } from "./RMS/RestaurantMS";
+import {CustomerManagement } from "./CustomerManagement/CustomerManagement";
+import { Position } from "./StaffManagement/Positionn";
+import { RestaurantMS } from "./RestaurantManagement/RestaurantMS";
 import { Table } from "./RestaurantInfo/Table";
 import { RestaurantInfo } from "./RestaurantInfo/RestaurantInfo";
-import { OutLineCustomers } from "./CustomersList/OutLineCus";
+import { OutLineCustomers, OutlineOrder } from "./CustomerManagement/OutLineCus";
+import { Staff } from "./StaffManagement/Staff";
+import { Gender } from "./sourceOfManyClass/Gender";
+import { Payment, Receipt } from "./sourceOfManyClass/Payment";
 // ======================================== Set schedule =================================================
-let soyuSchedule = new Schedule('Mon-Fri', 'Sat-Sun', '7:am-8pm');
-let yeyeSchedule = new Schedule('Mon-Fri', 'Sat-Sun', '7:am-8pm');
-// ======================================== Set Staff address ============================================
+let soyuSchedule = new Schedule('7:am-8pm');
+soyuSchedule.setDayWork(Weeks.MONDAY,Weeks.THURSDAY,Weeks.WEDNESDAY,Weeks.THURSDAY,Weeks.FRIDAY);
+let yeyeSchedule = new Schedule('7:am-8pm');
+yeyeSchedule.setDayWork(Weeks.MONDAY,Weeks.THURSDAY,Weeks.WEDNESDAY,Weeks.THURSDAY,Weeks.FRIDAY)
+let aSchedule = new Schedule('7:am-8pm');
+aSchedule.setDayWork(Weeks.MONDAY,Weeks.THURSDAY,Weeks.WEDNESDAY,Weeks.THURSDAY,Weeks.FRIDAY)
+let bSchedule = new Schedule('7:am-8pm');
+bSchedule.setDayWork(Weeks.MONDAY,Weeks.THURSDAY,Weeks.WEDNESDAY,Weeks.THURSDAY,Weeks.FRIDAY)
+let cSchedule = new Schedule('7:am-8pm');
+cSchedule.setDayWork(Weeks.MONDAY,Weeks.THURSDAY,Weeks.WEDNESDAY,Weeks.THURSDAY,Weeks.FRIDAY)
+// ======================================== Set Staf address ============================================
 let soyuAddress = new Address('Phnom Penh','#ST2002',13222444,'No5');
 let yeyeAddress = new Address('Phnom Penh','#ST371',25302444,'No02');
-// ======================================== Customers Address ============================================
+let aAddress = new Address('Phnom Penh','#ST371',22222222,'No7');
+let bAddress = new Address('Phnom Penh','#ST371',333333333,'No07');
+let cAddress = new Address('Phnom Penh','#ST371',11111111,'No7');
+
+
+// ========================================= Staff list ==============================================
+let soyuWaiter = new Staff('soyu',19, Gender.FEMALE,Position.WAITER,300,'002724999',soyuAddress,soyuSchedule);
+let yeyeClerk = new Staff('yeye',23, Gender.MALE,Position.CLERK,300,'002744990',yeyeAddress,yeyeSchedule);
+let aResceptionist = new Staff('yeye',20, Gender.MALE,Position.RECEPTIONIST,300,'002744990',aAddress,aSchedule);
+let bSheft = new Staff('yeye',30, Gender.MALE,Position.SHEFT,500,'002744990',bAddress,bSchedule);
+let cSecurityman = new Staff('yeye',23, Gender.MALE,Position.SECURITYMAN,250,'002744990',cAddress,cSchedule);
+//get and add in staffList class
+let staffList=new StaffList();
+staffList.addWaiter(soyuWaiter);
+staffList.addClerk(yeyeClerk);
+staffList.addReceptionist(aResceptionist);
+staffList.addShefts(bSheft);
+staffList.addSecurityman(cSecurityman);
+// console.log(staffList);
+// ========================================== MonthPayment ==========================================
+let januaryPayment=new MonthPayment('January',300,50,1000);
+let februaryPayment=new MonthPayment('February',200,20,700);
+// ============================================ Manager =============================================
+
+let manager=new Manager('sp',22,Gender.FEMALE,Position.MANAGER);
+manager.addMonthPayment(januaryPayment);
+manager.addMonthPayment(februaryPayment);
+// console.log(manager);
+//=========================================== Add Customer ============================================
+//
+// ======================================== Customers Address =========================================
 // Sreykea Address
 let sreykeaAddress = new Address('Phnom Penh','#ST230',97252484,'No47D');
 // Mey Address
@@ -33,49 +71,48 @@ let sreykeaFoodFryVeg=new Food(Foods.FRYVEGETABLE,3);
 //Mey Foods
 let meyFoodFryEgg=new Food(Foods.FRYEGG,2);
 let meyFoodMaju=new Food(Foods.MAJU,3);
-// set staff info
-let soyuWaiter = new Waiter('soyu', Gender.Female, 19,300,'002724999',soyuAddress,soyuSchedule,Position.WAITER);
-let yeyeClerk = new Clerk('yeye', Gender.Male, 23,300,'002744990',yeyeAddress,yeyeSchedule,Position.CLERK);
-//get and add in staffList class
-let staffList=new StaffList();
-staffList.addWaiter(soyuWaiter);
-staffList.addClerk(yeyeClerk);
-
-// ========================================== MonthPayment ==========================================
-let januaryPayment=new MonthPayment('January',300,50,1000);
-let februaryPayment=new MonthPayment('February',200,20,700);
-// ============================================ Manager =============================================
-let managerAddress = new Address('Phnom Penh','#ST371',12335566,'No47D');
-let managerSchedult = new Schedule('Mon-Fri', 'Sat-Sun', '7:am-8pm');
-
-let manager=new Manager('sp',Gender.Female,22,1000,'002725213',managerAddress,managerSchedult,Position.MANAGER);
-manager.addMonthPayment(januaryPayment);
-manager.addMonthPayment(februaryPayment);
-// console.log(manager.getStaffList());
-// console.log(manager);
-//========================================== Add Customer ===========================================
 // Cus Sreykea
-let sreykeaOnlineCus=new Onlinecustomers('sreykea',Gender.Female,sreykeaAddress);
-sreykeaOnlineCus.addFood(sreykeaFoodKoko)
-sreykeaOnlineCus.addFood(sreykeaFoodFryVeg)
+let sreykeaOrder=new OnlineOrder(sreykeaAddress);
+sreykeaOrder.addFood(sreykeaFoodKoko)
+sreykeaOrder.addFood(sreykeaFoodFryVeg)
+let sreykeaReceipt=new Receipt('SP_Restaurant');
+sreykeaReceipt.addFoodList(meyFoodFryEgg,meyFoodMaju);
+let sreykeaPayment=new Payment(sreykeaReceipt);
+let sreykeaOnlineCus=new OnlineCustomers('sreykea',22,Gender.FEMALE,Position.ONLINECUS,sreykeaPayment);
+sreykeaOnlineCus.addOrder(sreykeaOrder);
 // Cus Mey
-let meyOnlineCus=new Onlinecustomers('mey',Gender.Female,meyAddress);
-meyOnlineCus.addFood(meyFoodFryEgg)
-meyOnlineCus.addFood(meyFoodMaju)
+let meyOrder=new OnlineOrder(meyAddress);
+meyOrder.addFood(meyFoodFryEgg)
+meyOrder.addFood(meyFoodMaju)
+let meyReceipt=new Receipt('SP_Restaurant');
+meyReceipt.addFoodList(meyFoodFryEgg,meyFoodMaju);
+let meyPayment=new Payment(meyReceipt);
+let meyOnlineCus=new OnlineCustomers('mey',20,Gender.FEMALE,Position.ONLINECUS,meyPayment);
+meyOnlineCus.addOrder(meyOrder);
 // console.log(onlinecustomers);
 
 // OutlineCustomers----------------------
-let table = new Table(1,2);
-let sreyKea = new OutLineCustomers("Sreykea Reun",Gender.Female,table);
-let maju = new Food(Foods.MAJU, 2);
-sreyKea.addFood(maju);
-console.log(sreyKea);
+let dTable=new Table(2,5);
+let dFoodFryegg = new Food(Foods.FRYEGG,2)
 
+let dOutLineOrder=new OutlineOrder(dTable);
+dOutLineOrder.addFood(sreykeaFoodKoko)
+dOutLineOrder.addFood(sreykeaFoodFryVeg)
+let dReceipt=new Receipt('SP_Restaurant');
+dReceipt.addFoodList(dFoodFryegg,meyFoodMaju);
+console.log(dReceipt.getTotal());
+console.log(dReceipt);
+
+let dPayment=new Payment(sreykeaReceipt)
+let dOulineCus = new OutLineCustomers(Gender.FEMALE,dPayment);
+dOulineCus.addOrder(dOutLineOrder);
+// console.log(dOulineCus)
 // ========================================== Customers Class ===========================================
-let customersList=new CustomerList();
-customersList.addOnlineCus(sreykeaOnlineCus);
-customersList.addOnlineCus(meyOnlineCus);
-customersList.addOutlineCus(sreyKea);
+let customerManagement=new CustomerManagement();
+customerManagement.addOnlineCus(sreykeaOnlineCus);
+customerManagement.addOnlineCus(meyOnlineCus);
+customerManagement.addOutlineCus(dOulineCus)
+// console.log(customerManagement);
 
 //
 let phnomPenh = new Address("Phnom Penh", "str 2004", 12495969, "houseNo49");
@@ -83,17 +120,18 @@ let vegetables = new Food(Foods.FRYVEGETABLE, 1);
 let soup = new Food(Foods.KHMERSUOP, 5);
 let table1 = new Table(1, 4);
 let table2 = new Table(2, 5);
+// console.log(customersList);
+
 // ==========================================  restaurantInfo ===========================================
 let restaurantInfo = new RestaurantInfo("SP_Restaurant", phnomPenh);
 restaurantInfo.addFood(vegetables);
 restaurantInfo.addFood(soup);
 restaurantInfo.setTable(table1);
 restaurantInfo.setTable(table2);
-console.log(restaurantInfo);
-// console.log(customersList.getOutlineCus());
+// console.log(restaurantInfo);
 // ========================================= RMS =====================================================
-let restaurantMS=new RestaurantMS('Restaurant Management System',restaurantInfo);
-restaurantMS.addStaffList(staffList);
-restaurantMS.addCusList(customersList);
+let restaurantMS=new RestaurantMS('Restaurant Management System',restaurantInfo,manager);
+restaurantMS.addStaffManagement(staffList);
+restaurantMS.addCusManagement(customerManagement);
 // console.log(restaurantMS);
 
