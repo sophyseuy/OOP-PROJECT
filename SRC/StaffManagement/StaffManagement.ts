@@ -10,6 +10,7 @@ export class StaffManagement {
     private clerk: Staff[] = [];
     private receptionist: Staff[] = [];
     private securityman: Staff[] = [];
+    private dishWasher: Staff[] = [];
     constructor() {}
     // Add Functions
     addManager(manager: Manager) {
@@ -30,6 +31,9 @@ export class StaffManagement {
     addSecurityman(securityman: Staff) {
         this.securityman.push(securityman);
     }
+    addDishwasher(...dishWasher:Staff[]){
+        this.dishWasher=this.dishWasher.concat(dishWasher);
+    }
     // Get Functions
     getManager() {
         return this.manager
@@ -48,6 +52,9 @@ export class StaffManagement {
     }
     getSecurityman() {
         return this.securityman;
+    }
+    getDishwasher(){
+        return this.dishWasher;
     }
     getPaid() {
         let result: number = 0;

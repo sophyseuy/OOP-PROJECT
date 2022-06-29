@@ -1,6 +1,7 @@
 
 import { StaffManagement } from "../StaffManagement/StaffManagement";
 export class MonthPayment {
+    private total:number=0;
     constructor(private month: string,
         private foodIngredients: number,
         private restProperty: number,
@@ -23,9 +24,8 @@ export class MonthPayment {
         totalMonthPayment+=this.getFoodIngredients()
         totalMonthPayment+=this.getRestProperty();
         totalMonthPayment+=para.getPaid()
-        totalMonthPayment+=para.getPaid();
-        totalMonthPayment+=para.getPaid();
+      
+        return this.total=totalMonthPayment;
         
-        console.log(totalMonthPayment);
     }
 }

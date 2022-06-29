@@ -26,20 +26,24 @@ let bSchedule = new Schedule('7:am-8pm');
 bSchedule.setDayWork(Weeks.MONDAY,Weeks.THURSDAY,Weeks.WEDNESDAY,Weeks.THURSDAY,Weeks.FRIDAY)
 let cSchedule = new Schedule('7:am-8pm');
 cSchedule.setDayWork(Weeks.MONDAY,Weeks.THURSDAY,Weeks.WEDNESDAY,Weeks.THURSDAY,Weeks.FRIDAY)
+let aDishwasherSchedule = new Schedule('7:am-8pm');
+aDishwasherSchedule.setDayWork(Weeks.MONDAY,Weeks.THURSDAY,Weeks.WEDNESDAY,Weeks.THURSDAY,Weeks.FRIDAY)
 // ======================================== Set Staf address ============================================
 let soyuAddress = new Address('Phnom Penh','#ST2002',13222444,'No5');
 let yeyeAddress = new Address('Phnom Penh','#ST371',25302444,'No02');
 let aAddress = new Address('Phnom Penh','#ST371',22222222,'No7');
 let bAddress = new Address('Phnom Penh','#ST371',333333333,'No07');
 let cAddress = new Address('Phnom Penh','#ST371',11111111,'No7');
+let aDishwasherAddress = new Address('Phnom Penh','#ST371',11111111,'No9');
 
 
-// ========================================= Staff list ==============================================
+// ========================================= StaffManagement ==============================================
 let soyuWaiter = new Staff('soyu',19, Gender.FEMALE,Position.WAITER,300,'002724999',soyuAddress,soyuSchedule);
 let yeyeClerk = new Staff('yeye',23, Gender.MALE,Position.CLERK,300,'002744990',yeyeAddress,yeyeSchedule);
 let aResceptionist = new Staff('yeye',20, Gender.MALE,Position.RECEPTIONIST,300,'002744990',aAddress,aSchedule);
 let bSheft = new Staff('yeye',30, Gender.MALE,Position.SHEFT,500,'002744990',bAddress,bSchedule);
 let cSecurityman = new Staff('yeye',23, Gender.MALE,Position.SECURITYMAN,250,'002744990',cAddress,cSchedule);
+let aDishwasher = new Staff('yeye',23, Gender.MALE,Position.SECURITYMAN,250,'002744990',aDishwasherAddress,aDishwasherSchedule);
 //get and add in staffList class
 let staffManagement=new StaffManagement();
 staffManagement.addWaiter(soyuWaiter);
@@ -47,12 +51,14 @@ staffManagement.addClerk(yeyeClerk);
 staffManagement.addReceptionist(aResceptionist);
 staffManagement.addShefts(bSheft);
 staffManagement.addSecurityman(cSecurityman);
-// console.log(staffManagement);
+staffManagement.addSecurityman(aDishwasher);
+// console.log(staffManagement.getPaid());
 // ========================================== MonthPayment ==========================================
 let januaryPayment=new MonthPayment('January',300,50,1000);
 januaryPayment.getTotalOfPayment(staffManagement);
-let februaryPayment=new MonthPayment('February',200,20,700);
+let februaryPayment=new MonthPayment('February',200,20,1500);
 februaryPayment.getTotalOfPayment(staffManagement);
+// console.log(februaryPayment);
 // ============================================ Manager =============================================
 
 let manager=new Manager('sp',22,Gender.FEMALE,Position.MANAGER);
@@ -102,10 +108,12 @@ dOutLineOrder.addFood(sreykeaFoodKoko)
 dOutLineOrder.addFood(sreykeaFoodFryVeg)
 let dReceipt=new Receipt('SP_Restaurant');
 dReceipt.addFoodList(dFoodFryegg,meyFoodMaju);
-console.log(dReceipt.getTotal());
-console.log(dReceipt);
+// console.log(dReceipt.getTotal());
+// console.log(dReceipt);
 
-let dPayment=new Payment(sreykeaReceipt)
+let dPayment=new Payment(dReceipt)
+// console.log(dPayment)
+
 let dOulineCus = new OutLineCustomers(Gender.FEMALE,dPayment);
 dOulineCus.addOrder(dOutLineOrder);
 // console.log(dOulineCus)
@@ -113,10 +121,7 @@ dOulineCus.addOrder(dOutLineOrder);
 let customerManagement=new CustomerManagement();
 customerManagement.addOnlineCus(sreykeaOnlineCus);
 customerManagement.addOnlineCus(meyOnlineCus);
-<<<<<<< HEAD
-=======
 customerManagement.addOutlineCus(dOulineCus)
->>>>>>> b5019a737ebb3794d062cf6c9b134cfde332eb36
 // console.log(customerManagement);
 
 //
@@ -139,5 +144,5 @@ let restaurantMS=new RestaurantMS('Restaurant Management System',restaurantInfo,
 restaurantMS.addStaffManagement(staffManagement);
 restaurantMS.addCusManagement(customerManagement);
 
-console.log(restaurantMS);
+// console.log(restaurantMS);
 

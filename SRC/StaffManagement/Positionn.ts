@@ -6,5 +6,6 @@ export enum Position {
     RECEPTIONIST = 'receptionist',
     SECURITYMAN = 'securityman',
     ONLINECUS='Online customer',
-    OUTLINECUS='Outline customer'
+    OUTLINECUS='Outline customer',
+    DISHWASHER='Dishwaher',
 }
